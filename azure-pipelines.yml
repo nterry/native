@@ -1,0 +1,24 @@
+trigger:
+  branches:
+    include:
+    - master
+    - refs/tags/*
+
+jobs:
+- job:
+  displayName: 'Snapshot build'
+  condition: eq(variables['build.sourceBranch'], 'refs/heads/master')
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  container: nicholasterry/azure-pipelines-alpine:latest
+
+  steps:
+  - checkout: self
+    submodules: true
+
+  - script: sudo apk add build-base openjdk11 maven
+    displayName: 'Setup prerequisite(s)'
+
+  - script: mvn -Drevision=$(Build.BuildNumber) clean install -P linux-alpine,!linux
+    displayName: 'Build artifact(s)'

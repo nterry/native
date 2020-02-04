@@ -3,3 +3,6 @@ target
 gpg-sign.json
 mvn-sync.json
 secrets.tar
+
+.idea/
+*.iml

@@ -158,6 +158,18 @@
       </modules>
     </profile>
     <profile>
+      <id>linux-alpine</id>
+      <activation>
+        <os>
+          <name>Linux</name>
+          <family>unix</family>
+        </os>
+      </activation>
+      <modules>
+        <module>linux-alpine-x86_64</module>
+      </modules>
+    </profile>
+    <profile>
       <id>osx</id>
       <activation>
         <os>
